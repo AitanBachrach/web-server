@@ -23,7 +23,7 @@ app.use(express.json());
 */
 
 const app = express();
-const allowedOrigins = ['https://aitanbachrach.github.io'];
+const allowedOrigins = ['https://aitanbachrach.github.io', 'http://localhost:3000'];
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
