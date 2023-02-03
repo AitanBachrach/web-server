@@ -4,8 +4,6 @@ import cors from 'cors';
 
 
 import {makeGame, addPlayer, getGame, putGame} from './londonbridge-controller';
-const fs = require("fs");
-const https = require("https");
 /*
 
 
@@ -77,11 +75,7 @@ app.put('/london-bridge/:id',async (req, res, next) => {
 app.all('/london-bridge/:id', () =>{
   console.log('perhaps a cors issue')
 })
-https.createServer(
-	{
-		key: fs.readFileSync("key.pem"),
-		cert: fs.readFileSync("cert.pem"),
-	},
-	app)
-	.listen(PORT, ()=>{console.log(`Server is running on this port ${PORT}`);
-	});
+
+app.listen(PORT, () => {
+  console.log(`Server running at port: ${PORT}`);
+});
