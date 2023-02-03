@@ -33,7 +33,7 @@ dotenv.config();
 const PORT = process.env.PORT || 5001;
 app.options('*', cors())
 app.use(express.json());
-
+app.options('/london-bridge/lobby/:id', cors())
 app.post('/london-bridge/lobby/:id',async (req, res, next) =>{
   makeGame(req.params['id']).then((lbgame) => {
     res.status(200).json(lbgame)
