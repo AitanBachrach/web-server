@@ -35,8 +35,8 @@ app.options('*', cors())
 app.use(express.json());
 
 const httpsServer = https.createServer({
-  key: fs.readFileSync('/etc/letsencrypt/live/my_api_url/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/my_api_url/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/aitanbachrachserver.net/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/aitanbachrachserver.net/fullchain.pem'),
 }, app);
 
 app.post('/london-bridge/lobby/:id',async (req, res, next) =>{
