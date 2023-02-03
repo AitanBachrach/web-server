@@ -31,6 +31,7 @@ const options: cors.CorsOptions = {
 app.use(cors());
 dotenv.config();
 const PORT = process.env.PORT || 5001;
+app.options('*', cors())
 app.use(express.json());
 
 app.post('/london-bridge/lobby/:id',async (req, res, next) =>{
