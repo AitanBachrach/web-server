@@ -23,7 +23,7 @@ app.use(express.json());
 */
 
 const app = express();
-const allowedOrigins = ['https://aitanbachrach.github.io', 'http://localhost:3000'];
+const allowedOrigins = ['https://aitanbachrach.github.io', 'http://localhost:3000/'];
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
@@ -70,6 +70,10 @@ app.put('/london-bridge/:id',async (req, res, next) => {
   .catch(err => {
     return res.status(404).json
   })
+})
+
+app.all('/london-bridge/:id', () =>{
+  console.log('perhaps a cors issue')
 })
 
 app.listen(PORT, () => console.log(`Server is running on this port ${PORT}`))
