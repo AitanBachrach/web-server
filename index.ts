@@ -28,7 +28,7 @@ const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
 
-app.use(cors(options));
+app.use(cors());
 dotenv.config();
 const PORT = process.env.PORT || 5001;
 app.use(express.json());
