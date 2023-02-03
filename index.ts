@@ -1,9 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors';
-
-
 import {makeGame, addPlayer, getGame, putGame} from './londonbridge-controller';
+
+const https = require('https');
+const fs = require('fs');
 /*
 
 
@@ -32,7 +33,12 @@ dotenv.config();
 const PORT = process.env.PORT || 5001;
 app.options('*', cors())
 app.use(express.json());
-app.options('/london-bridge/lobby/:id', cors())
+
+const httpsServer = https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/my_api_url/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/my_api_url/fullchain.pem'),
+}, app);
+
 app.post('/london-bridge/lobby/:id',async (req, res, next) =>{
   makeGame(req.params['id']).then((lbgame) => {
     res.status(200).json(lbgame)
@@ -76,6 +82,6 @@ app.all('/london-bridge/:id', () =>{
   console.log('perhaps a cors issue')
 })
 
-app.listen(PORT, () => {
-  console.log(`Server running at port: ${PORT}`);
+httpsServer.listen(443, () => {
+  console.log(`Server running at port: 443`);
 });
