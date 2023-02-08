@@ -23,12 +23,12 @@ app.use(express.json());
 */
 
 const app = express();
-const allowedOrigins = ['https://aitanbachrach.github.io', 'http://localhost:3000/'];
+const allowedOrigins = ['https://aitanbachrach.github.io'];
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
 
-app.use(cors());
+app.use(cors(options));
 dotenv.config();
 const PORT = process.env.PORT || 5001;
 app.options('*', cors())
