@@ -54,6 +54,7 @@ class LBGame{
         }
       }
     }
+    shuffleArray(this.data.deck)
   }
 
   resolveAction(){
@@ -109,6 +110,13 @@ class LBGame{
     this.data.turnPlayer = this.data.round%4
     this.data.discard = []
     this.setupGame()
+  }
+}
+
+function shuffleArray(array:LBCard[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
